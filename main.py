@@ -6,8 +6,10 @@ while True :
 
     match user_action :
         case 'add' :
-            todo = input("Add what you want todo : ")
+            todo = input("Add what you want todo : ") + "\n"
             todos.append(todo)
+            file = open('todos.txt', 'w')
+            file.writeline(todos)
         case 'display' | 'show':
             for index, item in enumerate(todos) :
                 item = item.title()
