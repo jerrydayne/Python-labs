@@ -1,5 +1,3 @@
-todos = []
-
 while True :
     user_action = input("do you want to add, display, edit, complete or exit (add/display/exit): ")
     user_action = user_action.strip()
@@ -7,10 +5,21 @@ while True :
     match user_action :
         case 'add' :
             todo = input("Add what you want todo : ") + "\n"
+
+            file_reader = open('files/todos.txt', 'r')
+            todos = file_reader.readlines()
+            file_reader.close()
+
             todos.append(todo)
-            file = open('todos.txt', 'w')
-            file.writeline(todos)
+            file_writer = open('files/todos.txt', 'w')
+            file_writer.writeline(todos)
+            file_writer.close()
+
         case 'display' | 'show':
+            file_reader = open('files/todos.txt', 'r')
+            todos = file_reader.readlines()
+            file_reader.close()
+
             for index, item in enumerate(todos) :
                 item = item.title()
                 item_row = f"{index + 1}.{item}"
@@ -27,6 +36,6 @@ while True :
         case 'exit' :
             break
         case something_else :
-            print("this is an unknown selection, check again")
+            print("this is an unknown selection, pleas check and try again")
 
 print("Thanks for coming!")
