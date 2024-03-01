@@ -7,5 +7,5 @@ file_names = ["dayne.txt",
               "movie.txt"]
 
 for file_content, file_name in zip(file_contents, file_names) : 
-    file =open(f"files/{file_name}", "w")
+    file = open(f"files/{file_name}", "w")
     file.write(file_content)
