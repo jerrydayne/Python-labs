@@ -1,0 +1,6 @@
+pray
+run
+bath
+eat
+call sabs
+go to work

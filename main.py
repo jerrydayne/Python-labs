@@ -12,7 +12,7 @@ while True :
 
             todos.append(todo)
             file_writer = open('files/todos.txt', 'w')
-            file_writer.writeline(todos)
+            file_writer.writelines(todos)
             file_writer.close()
 
         case 'display' | 'show':
@@ -20,7 +20,14 @@ while True :
             todos = file_reader.readlines()
             file_reader.close()
 
-            for index, item in enumerate(todos) :
+            """            new_todos = []
+            for item in todos:
+                new_item = item.strip('\n')
+                new_todos.append(new_item)
+            """
+            new_todos = [item.strip('\n') for item in todos]
+
+            for index, item in enumerate(new_todos) :
                 item = item.title()
                 item_row = f"{index + 1}.{item}"
                 print(item_row)
@@ -34,6 +41,7 @@ while True :
              todo_serial_number = int(input("enter the serial number of the item to complete : "))
              todos.pop(todo_serial_number -1)
         case 'exit' :
+            print("Bye")
             break
         case something_else :
             print("this is an unknown selection, pleas check and try again")
