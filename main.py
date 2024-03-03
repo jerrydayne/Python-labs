@@ -20,14 +20,16 @@ while True :
             todos = file_reader.readlines()
             file_reader.close()
 
-            """            new_todos = []
+            """
+            new_todos = []
             for item in todos:
                 new_item = item.strip('\n')
                 new_todos.append(new_item)
             """
-            new_todos = [item.strip('\n') for item in todos]
+            ###new_todos = [item.strip('\n') for item in todos]
 
-            for index, item in enumerate(new_todos) :
+            for index, item in enumerate(todos) :
+                item = item.strip('\n')
                 item = item.title()
                 item_row = f"{index + 1}.{item}"
                 print(item_row)
