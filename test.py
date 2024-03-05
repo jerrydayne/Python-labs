@@ -28,3 +28,11 @@ file_writer = open('file.txt', 'w')
 file_writer.writelines(user_input)
 file_writer.close()
 """
+
+"""names = ["john smith", "jay santi", "eva kuki"]
+names = [name.title() for name in names]
+print(names)"""
+
+usernames = ["john 1990", "alberta1970", "magnola2000"]
+size = [len(username) for username in usernames]
+print(size)
