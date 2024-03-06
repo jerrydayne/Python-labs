@@ -1,7 +1,4 @@
 pray
-run
 bath
 eat
-call sabs
-go to work
-pray again
+check on sabs

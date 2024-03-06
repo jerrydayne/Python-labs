@@ -33,14 +33,35 @@ while True :
 
         case 'edit' :
             todo_serial_number = int(input("enter the serial number of the item to edit : "))
-            todo_serial_number = todo_serial_number - 1
-            new_todo = input("Enter new task")
-            todos[todo_serial_number] = new_todo
-            print(todos[todo_serial_number], "is replaced with ", new_todo)
+            todo_index = todo_serial_number - 1
+            todo_to_be_edited = todos[todo_index].strip('\n')
+            todo_serial_number = todo_index
+
+            with open('files/todos.txt', 'r') as file_reader :
+                todos = file_reader.readlines()
+
+            new_todo = input("Enter new task you would want to do : ")
+            todos[todo_serial_number] = new_todo + '\n'
+
+            with open('files/todos.txt', 'w') as file_writer :
+                file_writer.writelines(todos)
+
+            print(todo_to_be_edited, "is replaced with ", new_todo)
 
         case 'complete' :
              todo_serial_number = int(input("enter the serial number of the item to complete : "))
-             todos.pop(todo_serial_number -1)
+
+             with open('files/todos.txt', 'r') as file_reader :
+                todos = file_reader.readlines()
+             todo_index = todo_serial_number -1
+             todo_to_be_removed = todos[index].strip('\n')
+             todos.pop(todo_index)
+
+             with open('files/todos.txt', 'w') as file_writer :
+                file_writer.writelines(todos) 
+
+             message = f"Task {todo_to_be_removed} is completed and removed from the list"
+             print(message)
 
         case 'exit' :
             print("Bye")
