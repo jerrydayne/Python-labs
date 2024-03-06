@@ -5,20 +5,17 @@ while True :
     match user_action :
         case 'add' :
             todo = input("Add what you want todo : ") + "\n"
-
-            file_reader = open('files/todos.txt', 'r')
-            todos = file_reader.readlines()
-            file_reader.close()
+            with open('files/todos.txt', 'r') as file_reader :
+                todos = file_reader.readlines()
 
             todos.append(todo)
-            file_writer = open('files/todos.txt', 'w')
-            file_writer.writelines(todos)
-            file_writer.close()
-
+            with open('files/todos.txt', 'w') as file_writer :
+                file_writer.writelines(todos)
+            
         case 'display' | 'show':
-            file_reader = open('files/todos.txt', 'r')
-            todos = file_reader.readlines()
-            file_reader.close()
+
+            with open('files/todos.txt', 'r') as file_reader :
+                todos = file_reader.readlines()
 
             """
             new_todos = []
@@ -28,20 +25,23 @@ while True :
             """
             ### new_todos = [item.strip('\n') for item in todos]
 
-            for index, item in enumerate(todos) :
+            for index, item in enumerate(todos) : 
                 item = item.strip('\n')
                 item = item.title()
                 item_row = f"{index + 1}.{item}"
                 print(item_row)
+
         case 'edit' :
             todo_serial_number = int(input("enter the serial number of the item to edit : "))
             todo_serial_number = todo_serial_number - 1
             new_todo = input("Enter new task")
             todos[todo_serial_number] = new_todo
             print(todos[todo_serial_number], "is replaced with ", new_todo)
+
         case 'complete' :
              todo_serial_number = int(input("enter the serial number of the item to complete : "))
              todos.pop(todo_serial_number -1)
+
         case 'exit' :
             print("Bye")
             break
