@@ -33,6 +33,6 @@ file_writer.close()
 names = [name.title() for name in names]
 print(names)"""
 
-usernames = ["john 1990", "alberta1970", "magnola2000"]
+"""usernames = ["john 1990", "alberta1970", "magnola2000"]
 size = [len(username) for username in usernames]
-print(size)
+print(size)"""
