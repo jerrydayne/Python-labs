@@ -2,7 +2,7 @@ while True :
     user_action = input("do you want to add, display, edit, complete or exit (add/display/exit): ")
     user_action = user_action.strip()
 
-    if 'add' in user_action or'new' in user_action :
+    if user_action.startswith("add") or user_action.startswith("new") :
         todo = user_action[4:] + "\n"
         with open('files/todos.txt', 'r') as file_reader :
             todos = file_reader.readlines()
@@ -13,7 +13,7 @@ while True :
 
         print(f"{todo} has been added successfully to the Todo list")
         
-    elif 'show' in user_action :
+    elif user_action.startswith("show") :
 
         with open('files/todos.txt', 'r') as file_reader :
             todos = file_reader.readlines()
@@ -32,7 +32,7 @@ while True :
             item_row = f"{index + 1}.{item}"
             print(item_row)
 
-    elif  'edit' in user_action :
+    elif user_action.startswith('edit') :
         todo_serial_number = int(user_action[5:])
         todo_index = todo_serial_number - 1
         todo_to_be_edited = todos[todo_index].strip('\n')
@@ -49,7 +49,7 @@ while True :
 
         print(todo_to_be_edited, "is replaced with ", new_todo)
 
-    elif  'complete' in user_action or 'done' in user_action :
+    elif user_action.startswith('complete') or user_action.startswith('done') :
         todo_serial_number = int(user_action[9:])
         with open('files/todos.txt', 'r') as file_reader :
             todos = file_reader.readlines()
@@ -63,7 +63,7 @@ while True :
             message = f"Task '{todo_to_be_removed}' is completed and removed from the list. enter 'show' to view the updated list"
             print(message)
 
-    elif 'exit' in user_action :
+    elif user_action.startswith('exit') :
         print("Bye")
         break
     else :

@@ -36,3 +36,6 @@ print(names)"""
 """usernames = ["john 1990", "alberta1970", "magnola2000"]
 size = [len(username) for username in usernames]
 print(size)"""
+
+letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+print(letters[1:4])
