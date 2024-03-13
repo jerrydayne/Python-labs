@@ -33,35 +33,43 @@ while True :
             print(item_row)
 
     elif user_action.startswith('edit') :
-        todo_serial_number = int(user_action[5:])
-        todo_index = todo_serial_number - 1
-        todo_to_be_edited = todos[todo_index].strip('\n')
-        todo_serial_number = todo_index
+        try :        
+            todo_serial_number = int(user_action[5:])
+            todo_index = todo_serial_number - 1
+            todo_to_be_edited = todos[todo_index].strip('\n')
+            todo_serial_number = todo_index
 
-        with open('files/todos.txt', 'r') as file_reader :
-            todos = file_reader.readlines()
+            with open('files/todos.txt', 'r') as file_reader :
+                todos = file_reader.readlines()
 
-        new_todo = input("Enter new task you would want to do : ")
-        todos[todo_serial_number] = new_todo + '\n'
+            new_todo = input("Enter new task you would want to do : ")
+            todos[todo_serial_number] = new_todo + '\n'
 
-        with open('files/todos.txt', 'w') as file_writer :
-            file_writer.writelines(todos)
+            with open('files/todos.txt', 'w') as file_writer :
+                file_writer.writelines(todos)
 
-        print(todo_to_be_edited, "is replaced with ", new_todo)
+            print(todo_to_be_edited, "is replaced with ", new_todo)
+        except ValueError :
+            print("Invalid input")
+            continue
 
     elif user_action.startswith('complete') or user_action.startswith('done') :
-        todo_serial_number = int(user_action[9:])
-        with open('files/todos.txt', 'r') as file_reader :
-            todos = file_reader.readlines()
-            todo_index = todo_serial_number -1
-            todo_to_be_removed = todos[todo_index].strip('\n')
-            todos.pop(todo_index)
+        try :
+            todo_serial_number = int(user_action[9:])
+            with open('files/todos.txt', 'r') as file_reader :
+                todos = file_reader.readlines()
+                todo_index = todo_serial_number -1
+                todo_to_be_removed = todos[todo_index].strip('\n')
+                todos.pop(todo_index)
 
-        with open('files/todos.txt', 'w') as file_writer :
-            file_writer.writelines(todos) 
+            with open('files/todos.txt', 'w') as file_writer :
+                file_writer.writelines(todos) 
 
-            message = f"Task '{todo_to_be_removed}' is completed and removed from the list. enter 'show' to view the updated list"
-            print(message)
+                message = f"Task '{todo_to_be_removed}' is completed and removed from the list. enter 'show' to view the updated list"
+                print(message)
+        except IndexError :
+            print("There's no item with that number")
+            continue
 
     elif user_action.startswith('exit') :
         print("Bye")
