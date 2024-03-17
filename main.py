@@ -1,13 +1,20 @@
+def get_todos() :
+    with open('files/todos.txt', 'r') as file_reader :
+        todos = file_reader.readlines()
+    return todos
+
+
 while True :
     user_action = input("do you want to add, display, edit, complete or exit (add/display/exit): ")
     user_action = user_action.strip()
 
     if user_action.startswith("add") or user_action.startswith("new") :
         todo = user_action[4:] + "\n"
-        with open('files/todos.txt', 'r') as file_reader :
-            todos = file_reader.readlines()
+
+        todos = get_todos()
 
         todos.append(todo)
+
         with open('files/todos.txt', 'w') as file_writer :
             file_writer.writelines(todos)
 
@@ -15,8 +22,7 @@ while True :
         
     elif user_action.startswith("show") :
 
-        with open('files/todos.txt', 'r') as file_reader :
-            todos = file_reader.readlines()
+        todos = get_todos()
 
         """
         new_todos = []
@@ -39,8 +45,7 @@ while True :
             todo_to_be_edited = todos[todo_index].strip('\n')
             todo_serial_number = todo_index
 
-            with open('files/todos.txt', 'r') as file_reader :
-                todos = file_reader.readlines()
+            todos = get_todos()
 
             new_todo = input("Enter new task you would want to do : ")
             todos[todo_serial_number] = new_todo + '\n'
@@ -56,11 +61,12 @@ while True :
     elif user_action.startswith('complete') or user_action.startswith('done') :
         try :
             todo_serial_number = int(user_action[9:])
-            with open('files/todos.txt', 'r') as file_reader :
-                todos = file_reader.readlines()
-                todo_index = todo_serial_number -1
-                todo_to_be_removed = todos[todo_index].strip('\n')
-                todos.pop(todo_index)
+            
+            todos = get_todos()
+
+            todo_index = todo_serial_number -1
+            todo_to_be_removed = todos[todo_index].strip('\n')
+            todos.pop(todo_index)
 
             with open('files/todos.txt', 'w') as file_writer :
                 file_writer.writelines(todos) 

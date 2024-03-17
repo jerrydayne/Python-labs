@@ -37,5 +37,27 @@ print(names)"""
 size = [len(username) for username in usernames]
 print(size)"""
 
-letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
-print(letters[1:4])
+"""letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+print(letters[1:4])"""
+
+"""
+try:
+    total_value = float(input("Enter total value: "))
+    if total_value == 0 :
+        exit("Your total value cannot be zero")
+    value = float(input("Enter value: "))
+    
+    percentage = float((value/total_value) * 100) 
+    print(f"That is {percentage}%")
+    
+except ValueError:
+    print("You need to enter a number. Run the program again.")
+"""
+
+"""
+colors = [11, 34, 98, 43, 45, 54, 54]
+
+for number in colors :
+    if number > 50 :
+        print(number)
+"""
