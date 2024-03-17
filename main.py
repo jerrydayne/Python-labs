@@ -17,8 +17,8 @@ while True :
 
         with open('files/todos.txt', 'w') as file_writer :
             file_writer.writelines(todos)
-
-        print(f"{todo} has been added successfully to the Todo list")
+        feedback = todo.strip('\n')
+        print(f"'{feedback}' has been added successfully to the Todo list")
         
     elif user_action.startswith("show") :
 
