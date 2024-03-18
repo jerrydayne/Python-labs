@@ -61,3 +61,16 @@ for number in colors :
     if number > 50 :
         print(number)
 """
+
+def get_max():
+    grades = [9.6, 9.2, 9.7]
+    Max = max(grades)
+
+    Min = min(grades)
+
+    result = f"Max: {Max}, Min: {Min}"
+
+    return result
+
+print(get_max())
+
