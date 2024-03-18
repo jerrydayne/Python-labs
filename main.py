@@ -1,5 +1,5 @@
-def get_todos() :
-    with open('files/todos.txt', 'r') as file_reader :
+def get_todos(file_path) :
+    with open(file_path, 'r') as file_reader :
         todos_local = file_reader.readlines()
     return todos_local
 
@@ -11,7 +11,7 @@ while True :
     if user_action.startswith("add") or user_action.startswith("new") :
         todo = user_action[4:] + "\n"
 
-        todos = get_todos()
+        todos = get_todos('files/todos.txt')
 
         todos.append(todo)
 
@@ -22,7 +22,7 @@ while True :
         
     elif user_action.startswith("show") :
 
-        todos = get_todos()
+        todos = get_todos('files/todos.txt')
 
         """
         new_todos = []
@@ -45,7 +45,7 @@ while True :
             todo_to_be_edited = todos[todo_index].strip('\n')
             todo_serial_number = todo_index
 
-            todos = get_todos()
+            todos = get_todos('files/todos.txt')
 
             new_todo = input("Enter new task you would want to do : ")
             todos[todo_serial_number] = new_todo + '\n'
@@ -62,7 +62,7 @@ while True :
         try :
             todo_serial_number = int(user_action[9:])
             
-            todos = get_todos()
+            todos = get_todos('files/todos.txt')
 
             todo_index = todo_serial_number -1
             todo_to_be_removed = todos[todo_index].strip('\n')
