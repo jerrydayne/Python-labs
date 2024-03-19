@@ -3,21 +3,23 @@
 
 feet_and_inches = input("Enter feet and inches (e.g 4 12) : ")
 
-
-def convert(feet_and_inches):
+def parse(feet_and_inches):
     spliter = feet_and_inches.split(" ")
     feet = float(spliter[0])
     inches = float(spliter[1])
+    return {"feet": feet, "inches":inches}
 
+def convert(feet, inches):
     meter = feet * 0.3048 + inches * 0.0254
-    print(f"{feet} feet and {inches} inches is equal to {meter} meters")
-
     return meter
 
 
-result = convert(feet_and_inches)
+parsed = parse(feet_and_inches)
+result = convert(parsed['feet'], parsed['inches'])
 
-if result < 4.5:
+print(f"{parsed['feet']} feet and {parsed['inches']} inches is equal to {result} meters")
+
+if result < 4.75:
     print("heigt is below standard")
 
 else: print("height is within required standard")
