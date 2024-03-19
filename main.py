@@ -4,6 +4,11 @@ def get_todos(file_path) :
     return todos_local
 
 
+def write_todos(filepath, todos_arg):
+    with open(filepath, 'w') as file_writer:
+        file_writer.writelines(todos_arg)
+
+
 while True :
     user_action = input("do you want to add, display, edit, complete or exit (add/display/exit): ")
     user_action = user_action.strip()
@@ -15,8 +20,7 @@ while True :
 
         todos.append(todo)
 
-        with open('files/todos.txt', 'w') as file_writer :
-            file_writer.writelines(todos)
+        write_todos('files/todos.txt', todos)
         feedback = todo.strip('\n')
         print(f"'{feedback}' has been added successfully to the Todo list")
         
@@ -50,15 +54,14 @@ while True :
             new_todo = input("Enter new task you would want to do : ")
             todos[todo_serial_number] = new_todo + '\n'
 
-            with open('files/todos.txt', 'w') as file_writer :
-                file_writer.writelines(todos)
+            write_todos('files/todos.txt', todos)
 
             print(todo_to_be_edited, "is replaced with ", new_todo)
         except ValueError :
             print("Invalid input")
             continue
 
-    elif user_action.startswith('complete') or user_action.startswith('done') :
+    elif user_action.startswith('complete') or user_action.startswith('done    ') :
         try :
             todo_serial_number = int(user_action[9:])
             
@@ -68,11 +71,10 @@ while True :
             todo_to_be_removed = todos[todo_index].strip('\n')
             todos.pop(todo_index)
 
-            with open('files/todos.txt', 'w') as file_writer :
-                file_writer.writelines(todos) 
+            write_todos('files/todos.txt', todos)
 
-                message = f"Task '{todo_to_be_removed}' is completed and removed from the list. enter 'show' to view the updated list"
-                print(message)
+            message = f"Task '{todo_to_be_removed}' is completed and removed from the list. enter 'show' to view the updated list"
+            print(message)
         except IndexError :
             print("There's no item with that number")
             continue
