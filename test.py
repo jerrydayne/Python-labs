@@ -62,15 +62,15 @@ for number in colors :
         print(number)
 """
 
-def get_max():
-    grades = [9.6, 9.2, 9.7]
-    Max = max(grades)
+"""def get_list_avg(list):
+    ##new_list = list.split(" ")
+    new_list = [float(x) for x in list]
+    average = sum(new_list) / len(new_list)
+    print(average)
 
-    Min = min(grades)
+    return average
 
-    result = f"Max: {Max}, Min: {Min}"
+##get_list = input(" enter list of numbers (e.g 12 1 4 6 34 65): ")
 
-    return result
-
-print(get_max())
+print(get_list_avg([10, 20, 30, 40]))"""
 

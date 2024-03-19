@@ -1,11 +1,11 @@
-def get_todos(file_path) :
+def get_todos(file_path='files/todos.txt') :
     with open(file_path, 'r') as file_reader :
         todos_local = file_reader.readlines()
     return todos_local
 
 
-def write_todos(filepath, todos_arg):
-    with open(filepath, 'w') as file_writer:
+def write_todos(todos_arg, file_path='files/todos.txt'):
+    with open(file_path, 'w') as file_writer:
         file_writer.writelines(todos_arg)
 
 
@@ -16,11 +16,11 @@ while True :
     if user_action.startswith("add") or user_action.startswith("new") :
         todo = user_action[4:] + "\n"
 
-        todos = get_todos('files/todos.txt')
+        todos = get_todos()
 
         todos.append(todo)
 
-        write_todos('files/todos.txt', todos)
+        write_todos(todos)
         feedback = todo.strip('\n')
         print(f"'{feedback}' has been added successfully to the Todo list")
         
@@ -54,7 +54,7 @@ while True :
             new_todo = input("Enter new task you would want to do : ")
             todos[todo_serial_number] = new_todo + '\n'
 
-            write_todos('files/todos.txt', todos)
+            write_todos(todos)
 
             print(todo_to_be_edited, "is replaced with ", new_todo)
         except ValueError :
@@ -71,7 +71,7 @@ while True :
             todo_to_be_removed = todos[todo_index].strip('\n')
             todos.pop(todo_index)
 
-            write_todos('files/todos.txt', todos)
+            write_todos(todos)
 
             message = f"Task '{todo_to_be_removed}' is completed and removed from the list. enter 'show' to view the updated list"
             print(message)
