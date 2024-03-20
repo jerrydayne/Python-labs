@@ -10,3 +10,8 @@ def write_todos(todos_arg, file_path='files/todos.txt'):
     with open(file_path, 'w') as file_writer:
         file_writer.writelines(todos_arg)
 
+
+# testing the fucntions above
+if __name__ == "__main__":
+    print("works fine")
+    print(get_todos())
