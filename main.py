@@ -1,16 +1,4 @@
-def get_todos(file_path='files/todos.txt') :
-    """Gets the list of to-do's from the file todo.txt"""
-    with open(file_path, 'r') as file_reader :
-        todos_local = file_reader.readlines()
-    return todos_local
-
-
-def write_todos(todos_arg, file_path='files/todos.txt'):
-    """writes the added to-do item to the list of to-do's file i.e doto.txt in this case"""
-    with open(file_path, 'w') as file_writer:
-        file_writer.writelines(todos_arg)
-
-
+from modules import functions
 while True :
     user_action = input("do you want to add, display, edit, complete or exit (add/display/exit): ")
     user_action = user_action.strip()
@@ -18,17 +6,17 @@ while True :
     if user_action.startswith("add") or user_action.startswith("new") :
         todo = user_action[4:] + "\n"
 
-        todos = get_todos()
+        todos = functions.get_todos()
 
         todos.append(todo)
 
-        write_todos(todos)
+        functions.write_todos(todos)
         feedback = todo.strip('\n')
         print(f"'{feedback}' has been added successfully to the Todo list")
         
     elif user_action.startswith("show") :
 
-        todos = get_todos('files/todos.txt')
+        todos = functions.get_todos('files/todos.txt')
 
         """
         new_todos = []
@@ -51,12 +39,12 @@ while True :
             todo_to_be_edited = todos[todo_index].strip('\n')
             todo_serial_number = todo_index
 
-            todos = get_todos('files/todos.txt')
+            todos = functions.get_todos('files/todos.txt')
 
             new_todo = input("Enter new task you would want to do : ")
             todos[todo_serial_number] = new_todo + '\n'
 
-            write_todos(todos)
+            functions.write_todos(todos)
 
             print(todo_to_be_edited, "is replaced with ", new_todo)
         except ValueError :
@@ -67,13 +55,13 @@ while True :
         try :
             todo_serial_number = int(user_action[9:])
             
-            todos = get_todos('files/todos.txt')
+            todos = functions.get_todos('files/todos.txt')
 
             todo_index = todo_serial_number -1
             todo_to_be_removed = todos[todo_index].strip('\n')
             todos.pop(todo_index)
 
-            write_todos(todos)
+            functions.write_todos(todos)
 
             message = f"Task '{todo_to_be_removed}' is completed and removed from the list. enter 'show' to view the updated list"
             print(message)

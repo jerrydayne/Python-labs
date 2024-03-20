@@ -74,3 +74,35 @@ for number in colors :
 
 print(get_list_avg([10, 20, 30, 40]))"""
 
+"""def get_nr_items(user_input):
+    parse = user_input.split(", ")
+    noi = len(parse)
+    return noi
+
+print(get_nr_items("apple, banana, orange"))"""
+
+"""def get_area(x=0):
+    area = x**2
+    return area
+
+print(get_area(3))"""
+
+"""def wether_condition(temperature):
+    condition = "normal"
+    if temperature <= 7:
+        condition = "cold"
+    elif temperature > 7:
+        condition = "warm"
+    else : print("this weather is confused")
+    return condition
+
+
+print(wether_condition(7))"""
+
+def calculate_time(h, g=9.80665):
+    t = (2 * h / g) ** 0.5
+    return t
+    
+  
+time = calculate_time(100)
+print(time)
