@@ -1,5 +1,8 @@
 from modules import functions
+import time
 
+now = time.strftime("%b %D, %Y %H:%M:%S")
+print("The current date and time is", now)
 
 while True :
     user_action = input("do you want to add, display, edit, complete or exit (add/display/exit): ")
