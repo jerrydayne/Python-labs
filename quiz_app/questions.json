@@ -1,5 +1,5 @@
 [
   {"question_text":  "who is the future governor of Kaduna state?", "alternatives":  ["Kefas", "Kwasu", "Markus", "Dan Isa"], "correct_answer":  2},
   {"question_text":  "who dey our back?", "alternatives":  ["Buhari", "2face", "Jesus", "Alabi"], "correct_answer":  3},
-  {"question_text":  "wetin we carry?", "alternatuves":  ["Power", "Guns", "Garri", "Nothing"], "correct_answer":  1}
+  {"question_text":  "wetin we carry?", "alternatives":  ["Power", "Guns", "Garri", "Nothing"], "correct_answer":  1}
 ]
