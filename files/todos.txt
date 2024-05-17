@@ -11,3 +11,8 @@ select pre-wedding pictures
 tell sabs how much you really love her
 call mum in the morning
 Master python
+say hello
+say bye
+check for errors
+buy shoe shirt and belt
+
