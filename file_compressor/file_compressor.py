@@ -19,7 +19,7 @@ status_label = fsg.Text(" ", key="status")
 window = fsg.Window("File Compressor by Dayne.ng",
                     layout=[[label1, input1, choose_btn1],
                             [label2, input2, choose_btn2],
-                            [compress_btn, status_label]])
+                            [compress_btn, status_label ]])
 while True:
     event, values = window.read()
     print(event, values)
