@@ -1,4 +1,5 @@
 import FreeSimpleGUI as fsg
+from extractor_function import extract_archive
 
 fsg.theme("Black")
 
@@ -11,12 +12,21 @@ dir_input = fsg.Input()
 dir_btn = fsg.FolderBrowse("Choose Location", key="destination")
 
 extract_tbn = fsg.Button("Extract")
-status_label = fsg.Text(key="ststus", text_color="white")
+status_label = fsg.Text(key="status", text_color="white")
 
 window = fsg.Window("Dayne Archive Extractor",
                     layout=[[select_label, select_input, select_btn],
                             [dir_label, dir_input, dir_btn],
                             [extract_tbn, status_label]])
 
-window.read()
+while True:
+    event, values = window.read()
+    print(event, values)
+
+    archive_path = values["archive"]
+    dest_folder = values["destination"]
+    extract_archive(archive_path, dest_folder)
+    window["status"].update(value="Extraction Completed Successfully!")
+
+
 window.close()
