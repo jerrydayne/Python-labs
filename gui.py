@@ -2,6 +2,11 @@ from modules import functions
 
 import FreeSimpleGUI as fsg
 import time
+import os
+
+if os.path.exists("todos.txt"):
+    with open("todos.txt", "w") as file:
+        pass
 
 fsg.theme("DarkGrey6")
 clock = fsg.Text('', key="clock")
